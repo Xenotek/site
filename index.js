@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../index');
+var app = require('./app');
 var debug = require('debug')('simpleMongoDB:server');
 var http = require('http');
 
