@@ -1,0 +1,50 @@
+
+- var socials = {'vk': 'https://vk.com/xenotek', 'github': 'https://github.com/Xenotek/', 'in': 'https://www.linkedin.com/in/%D0%B8%D0%B2%D0%B0%D0%BD-%D0%BA%D0%BE%D1%80%D0%B5%D0%BF%D0%B0%D0%BD%D0%BE%D0%B2-00aa8012a' }
+
+mixin icon(name, mods)
+	- mods = mods || ''
+	svg(class="icon icon--" + name  class=mods)
+		use(xlink:href="/assets/img/sprite.svg#" + name)
+
+mixin iconpng(name,mods)
+	- mods = mods || ''
+	.pngsprite
+		img(src="", alt="")
+
+
+mixin socials(className, items)
+	each val, key in items
+		a(class=`${className}__link` href=val target="_blank")
+			+icon(key)
+
+mixin menu(className, items, mods)
+	- mods = mods || ''
+	ul(class=className class=mods)
+		each val, key in items
+			li(class=`${className}__item`)
+				a(class=`${className}__link` href=val target="_blank")= key
+
+mixin menu-no-blank(className, items, mods)
+	- mods = mods || ''
+	ul(class=className class=mods)
+		each val, key in items
+			li(class=`${className}__item`)
+				a(class=`${className}__link` href=val )= key
+
+
+mixin contacts-menu(className, icons, links, items)
+	ul(class=className)
+		each text, index in items
+			li(class=`${className}__item`)
+				+icon(icons[index])
+				a(class=`${className}__link` href=links[index] target="_blank")= text
+			
+mixin chart(items, title)
+	.skills__row
+		.skills__title=title
+		each text in items
+			.skills__item
+				.chart
+					svg.chart__svg
+						circle.chart__pie(r="27" cx="55" cy="55")
+					.chart__text= text

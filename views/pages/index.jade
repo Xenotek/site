@@ -1,0 +1,82 @@
+extends ../_template
+
+block variables
+	- var title = 'Сайт-портфолио'
+	- var bodyClass = 'body-welcome'
+
+block content	
+
+	.preloader
+		.preloader__spinner
+			.preloader__animation
+			.preloader__percents 0%
+			
+	.parallax
+		.parallax__layer
+			img(src="/assets/img/parallax_1.jpg", alt="")
+	.wrapper#authorize
+		.authorize
+			.authorize__wrapper
+				a(class="authorize__link" href="#authorize") Авторизоваться
+		.welcome
+			.messagebox-wrapper
+				.messagebox
+					.messagebox__close
+						+icon('close')
+					.messagebox__title Сообщение
+					.messagebox__text 
+
+			.win.front
+				.welcome__box
+					.welcome__body
+						.about
+							.about__avatar
+								img(class="about__img" src="assets/img/avatar.jpg" alt="avatar")
+							h1.about__author Корепанов Иван
+							.about__text Личный сайт веб разработчика
+							.socials.socials--opacity05
+								+socials("socials", socials)
+				
+						+menu-no-blank("welcome-menu", {'Мои работы': 'works.html', 'Обо мне': 'about.html', 'Блог': 'blog.html' })
+			.win.back
+				.welcome__box
+					.welcome__body.welcome__body--authorize
+						.close
+							a(href="#")
+								+icon('close')
+						
+						.title.title--underline Авторизуйтесь
+						form.form.form--authorize(action="#" method="POST" )
+							.form__group
+								.icon-wrapper
+									+icon('login')
+								input.input.input--text(type="text" placeholder="Логин" name="login")
+							.form__group
+								.icon-wrapper
+									+icon('password')
+								input.input.input--text(type="text" placeholder="Пароль" name="password")
+							
+							.check
+								label.check__label
+									input(value="no" type="checkbox" class="check__checkbox" name="robot")
+									span.check__wrap
+										+icon('check')
+									span(class="check__text") Я человек
+							.form__question Вы точно не робот?
+							.radiobox
+								input(id="yes" checked type="radio" class="radiobox__input radiobox__input--yes" name="answer" value="yes")
+								label.radiobox__label(for="yes").radiobox__label--first
+									span.radiobox__text Да
+								input(id="notsure" type="radio" class="radiobox__input" name="answer")
+								label.radiobox__label(for="notsure") 
+									span.radiobox__text Не уверен
+					
+							.form__buttons
+								a.form__button(href='#') На главную
+								button.form__button.form__submit(name='enter', type='submit') Войти
+
+	footer.footer-welcome
+		.footer__copyright 
+			span.footer__media © Корепанов Иван 
+			span.footer__media-hide | 
+			span.footer__media-line создано с любовью в LoftSchool | 2016

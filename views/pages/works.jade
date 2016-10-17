@@ -1,0 +1,147 @@
+extends ../_template
+
+block variables
+	- var title = 'Мои работы'
+	- var bodyClass = 'body-works'
+
+block content
+	.preloader
+		.preloader__spinner
+			.preloader__animation
+			.preloader__percents 0%
+			
+	.main-wrapper
+		
+		.overlay
+			+menu-no-blank('overlay-menu', {'Мои работы': 'works.html', 'Блог': 'blog.html', 'Обо мне': 'about.html', 'Авторизация': '/#authorize'})
+		
+		header.header
+			.portfolio
+				+icon('portfolio_header')
+			.header__socials
+				.socials
+					+socials("socials", socials)
+			.header__hamburger
+				a(href="#open").hamburger
+					.line.line--1
+					.line.line--2
+					.line.line--3
+
+			.header__about
+				.about
+					.about__avatar
+						img(class="about__img" src="assets/img/avatar.jpg" alt="avatar")
+					h1.about__author Корепанов Иван
+					.about__text Личный сайт веб разработчика
+			a(href="#next").header__arrow-down.arrow-down
+				+icon('arrow_down')
+			.triangles-works
+				include sections/triangles
+
+		section.section-works-title#next
+			h2.title-works.title-about--big.title--nomargin Мои работы
+			.title-works-bg
+				+icon('works_header')
+
+		section.section-slider
+			.slider(current="1")
+				.slider__images
+					img.slider__image(nomer="1" src="/assets/img/works/work1.jpg" alt="slider")
+					img.slider__image(nomer="2" src="/assets/img/works/work2.jpg" alt="slider")
+					img.slider__image(nomer="3" src="/assets/img/works/work3.jpg" alt="slider")
+				
+				.slider__description
+					.description(nomer="1")
+						h4.description__title Сайт школы онлайн Образования
+						.description__text HTML, CSS, JAVASCRIPT
+						a(href="https://loftschool.com/" target="_blank").description__link
+							+icon('link')
+							span Посмотреть сайт
+					.description(nomer="2")
+						h4.description__title Сайт 2
+						.description__text HTML, CSS, JAVASCRIPT
+						a(href="https://loftschool.com/" target="_blank").description__link
+							+icon('link')
+							span Посмотреть сайт
+					.description(nomer="3")
+						h4.description__title Сайт 333
+						.description__text HTML, CSS, JAVASCRIPT
+						a(href="https://loftschool.com/" target="_blank").description__link
+							+icon('link')
+							span Посмотреть сайт
+							
+				.slider__buttons
+					.slider__button.slider__button--prev
+						.slider__thumbs
+							.slider__thumb(nomer="1")
+							.slider__thumb(nomer="2")
+							.slider__thumb(nomer="3")
+						+icon('portf_arrow_down')
+					.slider__button.slider__button--next
+						.slider__thumbs
+							.slider__thumb(nomer="1")
+							.slider__thumb(nomer="2")
+							.slider__thumb(nomer="3")
+						+icon('portf_arrow_up')
+
+
+		section.section-review
+			.icon-list2
+
+			h2.title-review.title-about--big.title-about--short-400 Что обо мне говорят
+			.review-about-bg
+				+icon('about_header')
+			
+			.reviews
+				.review.reviews__left
+					.review__avatar
+						img(class="review__img" src="assets/img/dima.jpg" alt="avatar")
+					.review__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+						.icon-quote
+					.review__author Ковальчук Дмитрий
+					.review__about — основатель Loftschool
+
+				.review.reviews__right
+					.review__avatar
+						img(class="review__img" src="/assets/img/zar.jpg" alt="avatar")
+					.review__text Этот код выдержет любые испытания. Только пожалуйста, не загружается сайт на слишком старых браузерах!
+						.icon-quote
+					.review__author Зар Захаров
+					.review__about — преподаватель
+
+
+		section.section-feedback.blur
+			.blur__background
+				img.blur__img(src="/assets/img/1800_forest_works.jpg", alt="blur__img")
+
+			.icon-list3
+			.icon-list1
+
+			.messagebox-wrapper
+				.messagebox
+					.messagebox__close
+						+icon('close')
+					.messagebox__title Сообщение
+					.messagebox__text Вы не ввели Имя!
+
+			.feedback
+				.blur__form
+				h2.feedback__title.title-about--short Связаться со мной
+				form.form.feedback__form(action='#' method="POST")
+					.form__group
+						input.input.input--text(type="text" placeholder="Имя" name="name" )
+					.form__group
+						input.input.input--text(type="text" placeholder="Email" name="email" )
+					.form__group.form__group--textarea
+						textarea.textarea(name='subject' placeholder='Ваше сообщение' )
+					.form__buttons
+						button.form__button.form--submit(name='submit', type='submit') Отправить
+						button.form__button.form--reset(name='clear', type='reset') Очистить
+					
+
+			.section-feedback__arrow-up
+				a(href="#top").arrow-up
+					+icon('portf_arrow_up')
+
+
+		include sections/footer

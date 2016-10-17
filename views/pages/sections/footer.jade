@@ -1,0 +1,18 @@
+
+footer.main-footer
+		.footer
+			.footer__item
+				p.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. 
+			.footer__item.footer__item--second
+				.footer__menu
+					+menu("footer-menu", {'Мои работы': 'works.html', 'Обо мне': 'about.html', 'Блог': 'blog.html', 'Авторизация': '/#authorize' })
+				.footer__socials
+					.socials
+						+socials("socials", socials)
+			.footer__item.footer__item--last
+				blockquote.blockquote Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает, где вы живете.
+				.blockquote-author — Martin Golding
+		.main-footer__copyright 
+			span.footer__media © Корепанов Иван 
+			span.footer__media-hide | 
+			span.footer__media-line создано с любовью в LoftSchool | 2016

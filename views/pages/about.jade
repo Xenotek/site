@@ -1,0 +1,77 @@
+extends ../_template
+
+block variables
+	- var title = 'Обо мне'
+	- var bodyClass = 'body-about'
+
+block content	
+	.preloader
+		.preloader__spinner
+			.preloader__animation
+			.preloader__percents 0%
+			
+	.main-wrapper
+		.overlay
+			+menu-no-blank('overlay-menu', {'Мои работы': 'works.html', 'Блог': 'blog.html', 'Обо мне': 'about.html', 'Авторизация': '/#authorize'})
+		header.header
+			.portfolio
+				+icon('portfolio_header')
+			.header__socials
+				.socials.socials--floatleft
+					+socials("socials", socials)
+			.header__hamburger
+				a(href="#open").hamburger
+					.line.line--1
+					.line.line--2
+					.line.line--3
+						
+			.header__about
+				.about
+					.aboutme__avatar
+						img(class="about__img" src="assets/img/avatar.jpg" alt="avatar")
+					h1.aboutme__author Корепанов Иван
+					.aboutme__text Личный сайт веб разработчика
+			a(href="#next").header__arrow-down.arrow-down
+				+icon('arrow_down')
+			.triangles-about
+				include sections/triangles
+
+		section.section-about#next
+			.section-about__page.section-about__page--left
+				.section-about__page-wrapper
+					.section-about__half-page
+						.title-about__wrapper
+							.about-page__bg
+								+icon('about_header')
+							h2.title-about.title-about--big Обо мне
+					.section-about__half-page
+						.section-about__img
+							img(class="about__img" src="assets/img/avatar.jpg" alt="avatar")
+						.title-about.title--who Кто я
+						p.
+							Я веб разработчик из Москвы. Мне 29 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+						p.
+							Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+			.section-about__page.section-about__page--right
+				h2.title-skills Чем я могу быть вам полезен
+				p.
+					Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+
+				.skills
+					+chart(['HTML5','CSS3','JavaScript & jQuery'], 'Frontend')
+					+chart(['PHP','MySQL','Node.js & npm','Mongo.db'], 'Backend')
+					+chart(['Git','Gulp','Bower'], 'WorkFlow')
+
+		section.section-contacts
+			.section-contacts__map
+				#map
+				- var icons = ['skype', 'envelope', 'phone', 'map_marker']
+				- var links = ['skype:xenolitheone', 'mailto:moskovanin@yandex.ru', 'tel:+79312009324', 'https://www.google.ru/maps/@55.7900315,37.5614709,15z']
+				- var items = ['xenolitheone', 'moskovanin@yandex.ru', '+7 931 200 93 24', 'Москва, м. Динамо']
+				//.section-contacts__wrapper
+				.contacts
+					h2.title-about.title-about--contacts Контакты
+					+contacts-menu("contacts-list", icons, links, items)
+
+		include sections/footer
+	
